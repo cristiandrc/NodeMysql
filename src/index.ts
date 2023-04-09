@@ -1,6 +1,19 @@
 import express from 'express'
 import { version } from '../package.json'
+import { promisePool } from './db'
+
 const app = express()
+
+app.get('/ping', (_req, res) => {
+  void (async () => {
+    try {
+      const [rows] = await promisePool.query('SELECT 1 + 1 AS Result')
+      res.send(rows)
+    } catch (error) {
+      console.log(error)
+    }
+  })()
+})
 
 app.get('/employees', (_req, res) => {
   res.status(200).send('get employees')
