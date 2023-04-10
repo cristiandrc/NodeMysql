@@ -1,4 +1,4 @@
-import { RequestHandler } from 'express'
+import { type RequestHandler } from 'express'
 import { promisePool } from '../db'
 
 export const ping: RequestHandler = (_req, res) => {

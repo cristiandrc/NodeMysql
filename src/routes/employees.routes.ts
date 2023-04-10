@@ -4,18 +4,20 @@ import {
   createEmployees,
   deleteEmployees,
   getEmployees,
-  updateEmployees,
+  getEmployee,
+  updateEmployees
 } from '../controllers/employees.controllers'
 
 const router = Router()
 
 router.get('/employees', getEmployees)
+router.get('/employees/:id', getEmployee)
 
 router.post('/employees', createEmployees)
 
-router.put('/employees', updateEmployees)
+router.patch('/employees/:id', updateEmployees)
 
-router.delete('/employees', deleteEmployees)
+router.delete('/employees/:id', deleteEmployees)
 
 router.get('/version', (_req, res) => {
   res.send({ version })
